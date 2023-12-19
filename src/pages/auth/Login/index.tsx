@@ -1,16 +1,19 @@
-import Button from '@/app/components/Button';
-import Checkbox from '@/app/components/Checkbox';
-import Input from '@/app/components/Input';
 import Logo from '@/assets/logo.svg';
+import Button from '@/components/Button';
+import Checkbox from '@/components/Checkbox';
+import Input from '@/components/Input';
 import Image from 'next/image';
 import { useState } from 'react';
+import Ellipse from './components/Ellipse';
 
 export default function Login() {
   const [isRememberMe, setIsRememberMe] = useState(false);
 
   return (
-    <div className='flex flex-1 flex-col h-screen items-center justify-center bg-white'>
-      <form className='flex flex-col gap-6 p-8 rounded-2xl bg-white/30 shadow w-96 border border-grey-200'>
+    <div className='relative flex flex-1 flex-col h-screen items-center justify-center bg-white'>
+      <Ellipse />
+
+      <form className='absolute m-auto left-0 right-0 h-fit flex flex-col gap-6 p-8 rounded-2xl bg-white/30 shadow w-96 border border-grey-200'>
         <Image
           className='self-center'
           src={Logo}
