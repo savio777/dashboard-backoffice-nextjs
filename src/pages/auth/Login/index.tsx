@@ -1,12 +1,16 @@
+import Image from 'next/image';
+import { useState } from 'react';
+
 import Logo from '@/assets/logo.svg';
 import Button from '@/components/Button';
 import Checkbox from '@/components/Checkbox';
 import Input from '@/components/Input';
-import Image from 'next/image';
-import { useState } from 'react';
+import useSession from '@/store/Session';
 import Ellipse from './components/Ellipse';
 
 export default function Login() {
+  const { signin } = useSession();
+
   const [isRememberMe, setIsRememberMe] = useState(false);
 
   return (
@@ -39,6 +43,7 @@ export default function Login() {
         <Button
           onClick={(e) => {
             e.preventDefault();
+            signin({ name: 'Sávio test', isAuthenticated: true });
           }}
         >
           Entrar

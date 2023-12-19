@@ -1,5 +1,6 @@
 'use client';
 
+import DashboardTemplate from '@/components/DashboardTemplate';
 import { ReactNode } from 'react';
 import Login from '../pages/auth/Login';
 import useSession from '../store/Session';
@@ -15,7 +16,7 @@ const VerifyIfAuthenticated: React.FC<IVerifyIfAuthenticatedProps> = ({
 
   if (!isAuthenticated) return <Login />;
 
-  return children;
+  return <DashboardTemplate>{children}</DashboardTemplate>;
 };
 
 export default VerifyIfAuthenticated;
