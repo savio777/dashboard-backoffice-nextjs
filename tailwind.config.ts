@@ -17,6 +17,7 @@ const config: Config = {
         'grey-900': '#111827',
         'primary-200': '#FBD89D',
         'primary-400': '#F7B13C',
+        'primary-500': '#F59E0B',
         'primary-600': '#D97706',
       },
     },
