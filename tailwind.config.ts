@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         'danger-700': '#B4173A',
+        'grey-100': '#F3F4F6',
         'grey-200': '#E5E7EB',
         'grey-300': '#D1D5DB',
         'grey-500': '#6B7280',

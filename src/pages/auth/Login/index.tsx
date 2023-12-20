@@ -43,7 +43,11 @@ export default function Login() {
         <Button
           onClick={(e) => {
             e.preventDefault();
-            signin({ name: 'Sávio test', isAuthenticated: true });
+            signin({
+              name: 'Sávio test',
+              isAuthenticated: true,
+              initialsName: 'SA',
+            });
           }}
         >
           Entrar

@@ -1,6 +1,7 @@
 import Logo from '@/assets/logo.svg';
+import Badge from '@/components/atom/Badge';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { IconType } from 'react-icons';
 import {
   HiChevronDown,
@@ -19,7 +20,7 @@ import { MdMenuOpen } from 'react-icons/md';
 
 interface INavigationList {
   title?: string;
-  expanded?: boolean;
+  expanded: boolean;
   items: {
     Icon: IconType;
     title: string;
@@ -31,6 +32,7 @@ interface INavigationList {
 const Sidebar: React.FC = () => {
   const [navigationList, setNavigationList] = useState<INavigationList[]>([
     {
+      expanded: true,
       items: [{ title: 'Dashboard', Icon: HiOutlineHome, selected: true }],
     },
     {
@@ -55,28 +57,42 @@ const Sidebar: React.FC = () => {
     },
   ]);
 
+  const handleExpandNavigation = useCallback(
+    (index: number) => {
+      const navigationListTemp = navigationList;
+
+      navigationListTemp[index].expanded = !navigationListTemp[index].expanded;
+
+      setNavigationList([...navigationListTemp]);
+    },
+    [navigationList]
+  );
+
   return (
-    <div className='flex h-full w-80 border flex-col bg-white'>
+    <div className='flex h-full w-80 flex-col bg-white border-r border-r-grey-200'>
       <div className='flex items-center gap-5 px-3.5 py-5 text-primary-500 text-2xl'>
         <MdMenuOpen />
 
         <Image src={Logo} alt='logo image' width={95.5} height={19} />
       </div>
 
-      <div className='flex justify-center border bg-grey-200'>
-        <div className='border w-4/5 border-primary-400' />
+      <div className='flex justify-center h-px bg-grey-200 -mt-px'>
+        <div className='w-4/5 h-px bg-primary-400' />
       </div>
 
       <nav className='pl-3.5'>
         {navigationList.map((item, index) => (
           <div
-            key={`${item.title}-${index}`}
+            key={index}
             className={`flex flex-col gap-1 pr-3.5 py-6 ${
               index + 1 < navigationList.length && 'border-b border-b-grey-200'
             }`}
           >
             {!!item.title && (
-              <button className='flex w-full items-center justify-between px-3.5 pb-1 text-sm text-grey-500'>
+              <button
+                className='flex w-full items-center justify-between px-3.5 pb-1 text-sm text-grey-500'
+                onClick={() => handleExpandNavigation(index)}
+              >
                 <span className='font-bold text-xs uppercase text-grey-600'>
                   {item.title}
                 </span>
@@ -86,27 +102,24 @@ const Sidebar: React.FC = () => {
             )}
 
             <div className='flex flex-col gap-1'>
-              {item.items.map(
-                ({ title, badgeNumber, selected, Icon }, index) => (
-                  <a
-                    className={`${
-                      selected ? 'bg-primary-500 text-white' : 'text-grey-900'
-                    } flex gap-3 rounded-lg items-center px-3.5 py-2 text-lg`}
-                    href=''
-                    key={`${title}-${index}`}
-                  >
-                    <Icon />
+              {item.expanded &&
+                item.items.map(
+                  ({ title, badgeNumber, selected, Icon }, buttonIndex) => (
+                    <a
+                      className={`${
+                        selected ? 'bg-primary-500 text-white' : 'text-grey-900'
+                      } flex gap-3 rounded-lg items-center px-3.5 py-2 text-lg`}
+                      href=''
+                      key={`${title}-${buttonIndex}`}
+                    >
+                      <Icon />
 
-                    <span className='text-sm font-medium'>{title}</span>
+                      <span className='text-sm font-medium'>{title}</span>
 
-                    {!!badgeNumber && (
-                      <span className='text-primary-700 bg-primary-100 rounded-3xl ml-auto px-2 py-0.5 text-xs font-medium'>
-                        {badgeNumber}
-                      </span>
-                    )}
-                  </a>
-                )
-              )}
+                      {!!badgeNumber && <Badge>{badgeNumber}</Badge>}
+                    </a>
+                  )
+                )}
             </div>
           </div>
         ))}

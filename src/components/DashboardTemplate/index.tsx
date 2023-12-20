@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 
 interface IDashboardTemplateProps {
@@ -10,7 +11,7 @@ const DashboardTemplate: React.FC<IDashboardTemplateProps> = ({ children }) => (
     <Sidebar />
 
     <div className='flex flex-1 flex-col'>
-      <div className='flex h-16 border border-grey-900'>header</div>
+      <Header />
 
       {children}
     </div>
