@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Header from './components/Header';
+import Notifications from './components/Notifications';
 import Sidebar from './components/Sidebar';
 
 interface IDashboardTemplateProps {
@@ -15,6 +16,8 @@ const DashboardTemplate: React.FC<IDashboardTemplateProps> = ({ children }) => (
 
       {children}
     </div>
+
+    <Notifications />
   </div>
 );
 

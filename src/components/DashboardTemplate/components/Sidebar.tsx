@@ -70,11 +70,14 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className='flex h-full w-80 flex-col bg-white border-r border-r-grey-200'>
-      <div className='flex items-center gap-5 px-3.5 py-5 text-primary-500 text-2xl'>
+      <a
+        href=''
+        className='flex items-center gap-5 px-3.5 py-5 text-primary-500 text-2xl'
+      >
         <MdMenuOpen />
 
         <Image src={Logo} alt='logo image' width={95.5} height={19} />
-      </div>
+      </a>
 
       <div className='flex justify-center h-px bg-grey-200 -mt-px'>
         <div className='w-4/5 h-px bg-primary-400' />
@@ -108,7 +111,7 @@ const Sidebar: React.FC = () => {
                     <a
                       className={`${
                         selected ? 'bg-primary-500 text-white' : 'text-grey-900'
-                      } flex gap-3 rounded-lg items-center px-3.5 py-2 text-lg`}
+                      } flex gap-3 rounded-lg items-center px-3.5 py-2 text-lg hover:bg-primary-500 hover:text-white`}
                       href=''
                       key={`${title}-${buttonIndex}`}
                     >
