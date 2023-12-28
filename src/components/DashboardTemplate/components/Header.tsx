@@ -25,7 +25,7 @@ const Header: React.FC = () => {
         <HiOutlineBell />
         <div className='mb-4 ml-0.5'>
           <Badge padding='px-1' variant='primary-500'>
-            {notifications.length}
+            {notifications.filter((item) => !item.opened).length}
           </Badge>
         </div>
       </button>

@@ -1,9 +1,4 @@
-'use client';
-
-import useNotifications, { INotification } from '@/store/Notifications';
-import { useEffect } from 'react';
-
-const mockNotifications: INotification[] = [
+export const mockNotifications: INotification[] = [
   {
     id: 'c6367cf8-9f7c-4f89-97a1-e2e1d5ff94e2',
     title: 'New order',
@@ -33,17 +28,3 @@ const mockNotifications: INotification[] = [
     opened: true,
   },
 ];
-
-export default function DashBoard() {
-  const { updateNotifications } = useNotifications();
-
-  useEffect(() => {
-    updateNotifications(mockNotifications);
-  }, [updateNotifications]);
-
-  return (
-    <div className='flex flex-1 overflow-y-auto bg-grey-100 px-8'>
-      <h2 className='text-grey-900 text-3xl font-bold my-10'>Dashboard</h2>
-    </div>
-  );
-}
