@@ -3,7 +3,7 @@
 import useNotifications from '@/store/Notifications';
 import useSession from '@/store/Session';
 import { useEffect } from 'react';
-import Apresentation from './components/Apresentation';
+import CardApresentation from './components/CardApresentation';
 import { mockNotifications } from './mock';
 
 export default function DashBoard() {
@@ -26,14 +26,14 @@ export default function DashBoard() {
       <h2 className='text-grey-900 text-3xl font-bold my-10'>Dashboard</h2>
 
       <div className='flex gap-8'>
-        <Apresentation
+        <CardApresentation
           title={name}
           subtitle='Deslogar'
           initials={initialsName}
           onClick={logout}
         />
 
-        <Apresentation
+        <CardApresentation
           variant='doc'
           subtitle='Documnetação • GitHub'
           initials={initialsName}
