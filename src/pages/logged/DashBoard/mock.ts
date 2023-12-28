@@ -1,3 +1,20 @@
+export const mockDashboard = {
+  chartsSmall: {
+    revenue: {
+      value: '€192.1k',
+      descriptionValue: '32k',
+    },
+    newCustomers: {
+      value: 1340,
+      descriptionValue: '3%',
+    },
+    newOrders: {
+      value: 3543,
+      descriptionValue: '7%',
+    },
+  },
+};
+
 export const mockNotifications: INotification[] = [
   {
     id: 'c6367cf8-9f7c-4f89-97a1-e2e1d5ff94e2',
