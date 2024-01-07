@@ -110,14 +110,20 @@ const Sidebar: React.FC = () => {
                   ({ title, badgeNumber, selected, Icon }, buttonIndex) => (
                     <a
                       className={`${
-                        selected ? 'bg-primary-500 text-white' : 'text-grey-900'
-                      } flex gap-3 rounded-lg items-center px-3.5 py-2 text-lg hover:bg-primary-500 hover:text-white`}
+                        selected && 'bg-primary-500 text-white'
+                      } group flex gap-3 rounded-lg items-center px-3.5 py-2 text-lg hover:bg-primary-500`}
                       href=''
                       key={`${title}-${buttonIndex}`}
                     >
-                      <Icon />
+                      <Icon className='group-hover:text-white' />
 
-                      <span className='text-sm font-medium'>{title}</span>
+                      <span
+                        className={`${
+                          selected ? 'bg-primary-500' : 'text-grey-900'
+                        }text-sm font-medium group-hover:text-white`}
+                      >
+                        {title}
+                      </span>
 
                       {!!badgeNumber && <Badge>{badgeNumber}</Badge>}
                     </a>

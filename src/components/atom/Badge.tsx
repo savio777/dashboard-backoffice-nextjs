@@ -14,9 +14,9 @@ const Badge: React.FC<IBadgeProps> = ({
   variant = 'primary-700',
 }) => (
   <span
-    className={`text-${variant} bg-primary-100 rounded-3xl ${
-      margin || 'ml-auto'
-    } ${padding || 'px-2 py-0.5'} text-xs font-medium max-h-5`}
+    className={`text-${variant || 'primary-700'} ${margin || 'ml-auto'} ${
+      padding || 'px-2 py-0.5'
+    } bg-primary-100 rounded-3xl text-xs font-medium max-h-5 group-hover:text-primary-700`}
   >
     {children}
   </span>
