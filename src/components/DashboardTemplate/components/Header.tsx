@@ -30,11 +30,11 @@ const Header: React.FC = () => {
         </div>
       </button>
 
-      <div className='flex w-10 h-10 rounded-full items-center justify-center bg-grey-900'>
+      <button className='flex w-10 h-10 rounded-full items-center justify-center bg-grey-900'>
         <span className='uppercase text-lg text-white font-medium'>
           {initialsName}
         </span>
-      </div>
+      </button>
     </div>
   );
 };
